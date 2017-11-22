@@ -1,30 +1,19 @@
-const postcss = require('postcss')
-const loader = require('postcss-load-plugins')
+const postcss = require('postcss');
 
-let plugins
-let _processor
+let _processor;
 
 function processor(src, options) {
-  options = options || {}
+  options = options || {};
+  const { plugins } = options;
 
-  let loaderPromise
-  if (!plugins) {
-    loaderPromise = loader(options.env || process.env)
-      .then(pluginsInfo => {
-        plugins = pluginsInfo.plugins || []
-      })
-  } else {
-    loaderPromise = Promise.resolve()
-  }
-
-  return loaderPromise
+  return Promise.resolve()
     .then(() => {
       if (!_processor) {
-        _processor = postcss(plugins)
+        _processor = postcss(plugins);
       }
-      return _processor.process(src)
+      return _processor.process(src);
     })
-    .then(result => result.css)
+    .then(result => result.css);
 }
 
-module.exports = processor
+module.exports = processor;

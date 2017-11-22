@@ -1,30 +1,30 @@
-const loopWhile = require('deasync').loopWhile
-const processor = require('./processor')
+const { loopWhile } = require('deasync');
+const processor = require('./processor');
 
 module.exports = (css, settings) => {
-  const cssWithPlaceholders = css
-    .replace(/%%styled-jsx-placeholder-(\d+)%%/g, (_, id) =>
-      `/*%%styled-jsx-placeholder-${id}%%*/`
-    )
-  let processedCss
-  let wait = true
+  const cssWithPlaceholders = css.replace(
+    /%%styled-jsx-placeholder-(\d+)%%/g,
+    (_, id) => `/*%%styled-jsx-placeholder-${id}%%*/`
+  );
+  let processedCss;
+  let wait = true;
 
   function resolved(result) {
-    processedCss = result
-    wait = false
+    processedCss = result;
+    wait = false;
   }
 
-  processor(cssWithPlaceholders)
+  processor(cssWithPlaceholders, settings)
     .then(resolved)
-    .catch(resolved)
-  loopWhile(() => wait)
+    .catch(resolved);
+  loopWhile(() => wait);
 
   if (processedCss instanceof Error || processedCss.name === 'CssSyntaxError') {
-    throw processedCss
+    throw processedCss;
   }
 
-  return processedCss
-    .replace(/\/\*%%styled-jsx-placeholder-(\d+)%%\*\//g, (_, id) =>
-      `%%styled-jsx-placeholder-${id}%%`
-    )
-}
+  return processedCss.replace(
+    /\/\*%%styled-jsx-placeholder-(\d+)%%\*\//g,
+    (_, id) => `%%styled-jsx-placeholder-${id}%%`
+  );
+};

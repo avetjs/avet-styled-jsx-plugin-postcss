@@ -1,35 +1,33 @@
 {
-  "name": "styled-jsx-plugin-postcss",
-  "version": "0.1.1",
-  "description": "Plugin to add PostCSS support to styled-jsx",
+  "name": "avet-styled-jsx-plugin-postcss",
+  "version": "0.1.0",
+  "description": "Plugin to add PostCSS support to avet-styled-jsx",
   "main": "index.js",
   "scripts": {
     "test": "mocha test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/giuseppeg/styled-jsx-plugin-postcss.git"
+    "url": "git+https://github.com/avetjs/avet-styled-jsx-plugin-postcss.git"
   },
-  "keywords": [
-    "styled-jsx-plugin",
-    "styled-jsx",
-    "postcss"
-  ],
-  "author": "Giuseppe Gurgone",
+  "keywords": ["styled-jsx-plugin", "styled-jsx", "postcss", "avet"],
+  "author": "okoala <dapixp@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/giuseppeg/styled-jsx-plugin-postcss/issues"
+    "url": "https://github.com/avetjs/avet/issues"
   },
-  "homepage": "https://github.com/giuseppeg/styled-jsx-plugin-postcss#readme",
+  "homepage": "https://github.com/avetjs/avet",
   "dependencies": {
     "deasync": "^0.1.10",
-    "postcss": "^6.0.13",
-    "postcss-load-plugins": "^2.3.0"
+    "postcss": "^6.0.13"
   },
   "devDependencies": {
     "mocha": "^4.0.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-easy-import": "^3.0.0",
-    "postcss-nested": "^2.1.2"
+    "postcss-nested": "^2.1.2",
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-avet": "^0.3.9"
   }
 }
