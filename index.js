@@ -4,7 +4,7 @@ const processor = require('./processor');
 module.exports = (css, settings) => {
   const cssWithPlaceholders = css.replace(
     /%%styled-jsx-placeholder-(\d+)%%/g,
-    (_, id) => `/*%%styled-jsx-placeholder-${id}%%*/`
+    (_, id) => `/styled-jsx-placeholder-${id}/`
   );
   let processedCss;
   let wait = true;
@@ -24,7 +24,7 @@ module.exports = (css, settings) => {
   }
 
   return processedCss.replace(
-    /\/\*%%styled-jsx-placeholder-(\d+)%%\*\//g,
+    /\/styled-jsx-placeholder-(\d+)\//g,
     (_, id) => `%%styled-jsx-placeholder-${id}%%`
   );
 };
